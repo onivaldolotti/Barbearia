@@ -1,6 +1,7 @@
 @extends('index')
 
 @section('cabecalho')
+
     Editar funcionario
 @endsection
 
@@ -10,6 +11,7 @@
         @method('put')
         <div class="form-group">
             <label for="cnpj">CPF </label>
+
             <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $funcionario->cpf }}">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" value="{{ $funcionario->nome }}">

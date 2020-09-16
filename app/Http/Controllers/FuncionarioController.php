@@ -59,6 +59,7 @@ class FuncionarioController extends Controller
 
         $funcionario->save();
 
+
         return redirect()->route('funcionarios.index');
     }
 
