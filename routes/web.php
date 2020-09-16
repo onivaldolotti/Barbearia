@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('empresas', EmpresaController::class);
+Route::resource('usuarios', UserController::class)->names('user')->parameters(['usuarios' => 'user']);
+Route::resource('funcionarios', FuncionarioController::class);
+

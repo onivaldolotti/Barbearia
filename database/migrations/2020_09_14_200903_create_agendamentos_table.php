@@ -15,6 +15,11 @@ class CreateAgendamentosTable extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('funcionario_id')->constrained('funcionarios');
+            $table->foreignId('empresa_id')->constrained('empresas');
+            $table->date('horario_agendamento');
+            $table->foreignId('servico_id');
             $table->timestamps();
         });
     }

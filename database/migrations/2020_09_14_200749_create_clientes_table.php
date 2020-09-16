@@ -15,7 +15,15 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('empresa_id')->constrained('empresas');
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('senha');
+            $table->string('telefone');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
