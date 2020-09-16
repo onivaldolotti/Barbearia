@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sistema Para Cadastro de Vendas</title>
+    <title>Barbearia</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-        <div>
+        {{-- <div>
             <a class="text-light" href="/index">Home</a>
-        </div>
+        </div> --}}
         <span ></a>
         <div class="float-right">
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Cadastrar Vendedor</a>
+                    <a class="nav-link" href=" {{ route('empresas.index') }}">Empresas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Cadastrar Produtos</a>
+                    <a class="nav-link" href="{{ route('funcionarios.index') }}">Funcionarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Cadastrar Vendas</a>
+                    <a class="nav-link" href="{{ route('user.index') }}">Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Lista de Vendas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Enviar Relatório de Vendas</a>
+                    <a class="nav-link" href="">Serviço</a>
                 </li>
             </ul>
         </div>

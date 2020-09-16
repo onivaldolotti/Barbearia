@@ -26,8 +26,8 @@
                     <option value="{{ $empresa->id }}" > {{ $empresa->nome }}</option>
                 @endforeach
             </select>
-            <label for="cargo">Cargo</label>
-            <input type="text" class="form-control" id="cargo" name="cargo">
+            {{-- <label for="cargo">Cargo</label>
+            <input type="text" class="form-control" id="cargo" name="cargo"> --}}
             <label for="telefone">Telefone</label>
             <input type="text" class="form-control" id="telefone" name="telefone">
         </div>

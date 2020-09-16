@@ -1,48 +1,50 @@
 @extends('index')
 
 @section('cabecalho')
-    Editar funcinario
+
+    Editar funcionario
 @endsection
 
 @section('conteudo')
-    <form action=" {{ route('funcionarios.update', ['funcinario'=>$funcinario->id]) }}" method="POST">
+    <form action=" {{ route('funcionarios.update', ['funcionario'=>$funcionario->id]) }}" method="POST">
         @csrf
         @method('put')
         <div class="form-group">
             <label for="cnpj">CPF </label>
-            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $funcinario->cpf }}">
+
+            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $funcionario->cpf }}">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="{{ $funcinario->cpf }}">
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ $funcionario->nome }}">
         </div>
         <div class="form-group">
             <label for="email">E-mail </label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $funcinario->cpf }}">
+            <input type="email" class="form-control" id="email" name="email" value="{{ $funcionario->email }}">
             <label for="email">Senha </label>
-            <input type="password" class="form-control" id="password" name="password" value="{{ $funcinario->cpf }}">
+            <input type="password" class="form-control" id="password" name="password" >
         </div>
         <div class="form-group">
             <label for="empresa_id">Empresa </label>
             <select id="empresa_id" name="empresa_id">
                 @foreach($empresas as $empresa)
                     <option value="{{ $empresa->id }}" {{ $empresa->id==$funcionario->empresa_id ? "selected" :"" }}> {{ $empresa->nome}}</option>
-                @foreach
-            <label for="cargo">Cargo</label>
-            <input type="text" class="form-control" id="cargo" name="cargo" value="{{ $funcinario->cpf }}">
+                @endforeach
+            {{-- <label for="cargo">Cargo</label>
+            <input type="text" class="form-control" id="cargo" name="cargo" value="{{ $funcionario->cpf }}"> --}}
             <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" value="{{ $funcinario->cpf }}">
+            <input type="text" class="form-control" id="telefone" name="telefone" value="{{ $funcionario->telefone }}">
         </div>
 
         <div class="form-group">
             <label for="cep">CEP </label>
-            <input type="text" class="form-control" id="cep" name="cep" value="{{ $funcinario->cpf }}">
+            <input type="text" class="form-control" id="cep" name="cep" value="{{ $funcionario->cep }}">
             <label for="rua">Logradouro</label>
-            <input type="text" class="form-control" id="rua" name="rua" value="{{ $funcinario->cpf }}">
+            <input type="text" class="form-control" id="rua" name="rua" value="{{ $funcionario->rua }}">
             <label for="numero">Nº </label>
-            <input type="number" class="form-control" id="numero" name="numero" value="{{ $funcinario->cpf }}">
+            <input type="number" class="form-control" id="numero" name="numero" value="{{ $funcionario->numero }}">
         </div>
         <div class="form-group">
             <label for="cidade">Cidade </label>
-            <input type="text" class="form-control" id="cidade" name="cidade" value="{{ $funcinario->cpf }}">
+            <input type="text" class="form-control" id="cidade" name="cidade" value="{{ $funcionario->cidade }}">
             <label for="estado">Estado</label>
                 <select id="estado" name="estado">
                     <option value="AC" {{ "AC"==$funcionario->estado ? "selected" :"" }}>Acre</option>

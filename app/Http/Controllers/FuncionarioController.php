@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+use function PHPUnit\Framework\returnSelf;
 
 class FuncionarioController extends Controller
 {
@@ -47,7 +50,6 @@ class FuncionarioController extends Controller
         $funcionario->email      = $request->email;
         $funcionario->senha      = Hash::make($request->senha);
         $funcionario->empresa_id = $request->empresa_id;
-        $funcionario->cargo      = $request->cargo;
         $funcionario->telefone   = $request->telefone;
         $funcionario->cep        = $request->cep;
         $funcionario->rua        = $request->rua;
@@ -57,6 +59,8 @@ class FuncionarioController extends Controller
 
         $funcionario->save();
 
+
+        return redirect()->route('funcionarios.index');
     }
 
     /**
@@ -67,7 +71,7 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        //
+        return view('funcionarios.listarFuncionario',['funcionario'=>$funcionario]);
     }
 
     /**
@@ -78,7 +82,8 @@ class FuncionarioController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        //
+        $empresas = Empresa::all();
+        return view('funcionarios.editarFuncionario',['funcionario'=>$funcionario, 'empresas' =>$empresas]);
     }
 
     /**
@@ -90,7 +95,23 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, Funcionario $funcionario)
     {
-        //
+        $funcionario->cpf        = $request->cpf;
+        $funcionario->nome       = $request->nome;
+        $funcionario->email      = $request->email;
+        if(!empty($request->senha)){
+            $funcionario->senha      = Hash::make($request->senha);
+        }
+        $funcionario->empresa_id = $request->empresa_id;
+        $funcionario->telefone   = $request->telefone;
+        $funcionario->cep        = $request->cep;
+        $funcionario->rua        = $request->rua;
+        $funcionario->numero     = $request->numero;
+        $funcionario->cidade     = $request->cidade;
+        $funcionario->estado     = $request->estado;
+
+        $funcionario->save();
+
+        return redirect()->route('funcionarios.index');
     }
 
     /**
@@ -101,6 +122,8 @@ class FuncionarioController extends Controller
      */
     public function destroy(Funcionario $funcionario)
     {
-        //
+        $funcionario->delete();
+
+        return redirect()->route('funcionarios.index');
     }
 }

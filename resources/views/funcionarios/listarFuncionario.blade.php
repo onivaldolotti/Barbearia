@@ -7,7 +7,10 @@
 @section('conteudo')
     <div class="row">
         <div class="col-sm">
-            {{ $funcionario->cnpj }}
+            {{ $funcionario->id }}
+        </div>
+        <div class="col-sm">
+            {{ $funcionario->cpf }}
         </div>
         <div class="col-sm">
             {{ $funcionario->nome }}
