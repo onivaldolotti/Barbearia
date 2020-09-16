@@ -14,7 +14,13 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        //usamos o metodo all para resgatar todas as empresas cadastradas
+        $empresas = Empresa::all();
+
+        //retorno para a view, passando os dados resgatados
+        return view('empresas.listarTodasEmpresas', [
+            'empresas' => $empresas
+        ]);
     }
 
     /**
@@ -24,7 +30,8 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        //retorno para a view, passando os dados resgatados
+        return view('empresas.criarEmpresa');
     }
 
     /**
@@ -35,7 +42,21 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empresa = new Empresa();
+
+        $empresa->cnpj     = $request->cnpj;
+        $empresa->nome     = $request->nome;
+        $empresa->email    = $request->email;
+        $empresa->telefone = $request->telefone;
+        $empresa->cep      = $request->cep;
+        $empresa->rua      = $request->rua;
+        $empresa->numero   = $request->numero;
+        $empresa->cidade   = $request->cidade;
+        $empresa->estado   = $request->estado;
+
+        $empresa->save();
+
+        return redirect()-> route('empresas.index');
     }
 
     /**
@@ -46,7 +67,10 @@ class EmpresaController extends Controller
      */
     public function show(Empresa $empresa)
     {
-        //
+        //retorno para a view, passando os dados resgatados
+        return view('empresas.listarEmpresa', [
+            'empresa' => $empresa
+        ]);
     }
 
     /**
@@ -57,7 +81,10 @@ class EmpresaController extends Controller
      */
     public function edit(Empresa $empresa)
     {
-        //
+       //retorno para a view, passando os dados resgatados
+       return view('empresas.editarEmpresa', [
+        'empresa' => $empresa
+    ]);
     }
 
     /**
@@ -69,7 +96,19 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
-        //
+        $empresa->cnpj     = $request->cnpj;
+        $empresa->nome     = $request->nome;
+        $empresa->email    = $request->email;
+        $empresa->telefone = $request->telefone;
+        $empresa->cep      = $request->cep;
+        $empresa->rua      = $request->rua;
+        $empresa->numero   = $request->numero;
+        $empresa->cidade   = $request->cidade;
+        $empresa->estado   = $request->estado;
+
+        $empresa->save();
+
+        return redirect()-> route('empresas.index');
     }
 
     /**
@@ -80,6 +119,8 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        $empresa->delete();
+
+        return redirect()-> route('empresas.index');
     }
 }

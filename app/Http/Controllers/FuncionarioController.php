@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
@@ -14,7 +15,9 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        $funcionarios = Funcionario::all();
+
+        return view('funcionarios.listarTodosFuncionarios', ['funcionarios'=>$funcionarios]);
     }
 
     /**
@@ -24,7 +27,9 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::all();
+
+        return view('funcionarios.criarFuncionario', ['empresas'=>$empresas]);
     }
 
     /**
@@ -35,7 +40,23 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $funcionario = new Funcionario();
+
+        $funcionario->cpf        = $request->cpf;
+        $funcionario->nome       = $request->nome;
+        $funcionario->email      = $request->email;
+        $funcionario->senha      = Hash::make($request->senha);
+        $funcionario->empresa_id = $request->empresa_id;
+        $funcionario->cargo      = $request->cargo;
+        $funcionario->telefone   = $request->telefone;
+        $funcionario->cep        = $request->cep;
+        $funcionario->rua        = $request->rua;
+        $funcionario->numero     = $request->numero;
+        $funcionario->cidade     = $request->cidade;
+        $funcionario->estado     = $request->estado;
+
+        $funcionario->save();
+
     }
 
     /**
